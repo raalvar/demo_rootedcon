@@ -48,7 +48,7 @@ def check_prompt(ats: CustomConnection, input_text: str) -> str:
     response = request.json()
     language = response[0]['language']
 
-    #Detect regex
+    #Detect regex expression
     regex=re.findall(r'\b([a-z]*(ignor|olvid|forg|stop|act)[a-z]*)\b', input_text, re.I)
     regex_check = ""
     if len(regex) == 0:
