@@ -8,15 +8,15 @@ import requests
 import re
 import json
 
-tokenizer = AutoTokenizer.from_pretrained("deepset/deberta-v3-base-injection")
-lora_model = AutoModelForSequenceClassification.from_pretrained("deepset/deberta-v3-base-injection")
+#tokenizer = AutoTokenizer.from_pretrained("deepset/deberta-v3-base-injection")
+#lora_model = AutoModelForSequenceClassification.from_pretrained("deepset/deberta-v3-base-injection")
 
-#config = PeftConfig.from_pretrained("rafalvar/mistral-lora-token-classification")
-#model = AutoModelForSequenceClassification.from_pretrained(config.base_model_name_or_path)
-#lora_model = PeftModel.from_pretrained(model, "rafalvar/mistral-lora-token-classification")
+config = PeftConfig.from_pretrained("rafalvar/mistral-lora-token-classification")
+model = AutoModelForSequenceClassification.from_pretrained(config.base_model_name_or_path)
+lora_model = PeftModel.from_pretrained(model, "rafalvar/mistral-lora-token-classification")
 
-#tokenizer_id = "rafalvar/mistral-7b-ft-tc"
-#tokenizer = AutoTokenizer.from_pretrained(tokenizer_id)
+tokenizer_id = "rafalvar/mistral-7b-ft-tc"
+tokenizer = AutoTokenizer.from_pretrained(tokenizer_id)
 
 @tool
 def check_prompt(ats: CustomConnection, input_text: str) -> str:
