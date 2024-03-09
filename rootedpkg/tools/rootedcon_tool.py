@@ -8,9 +8,6 @@ import requests
 import re
 import json
 
-#tokenizer = AutoTokenizer.from_pretrained("deepset/deberta-v3-base-injection")
-#lora_model = AutoModelForSequenceClassification.from_pretrained("deepset/deberta-v3-base-injection")
-
 config = PeftConfig.from_pretrained("rafalvar/mistral-lora-token-classification")
 model = AutoModelForSequenceClassification.from_pretrained(config.base_model_name_or_path)
 lora_model = PeftModel.from_pretrained(model, "rafalvar/mistral-lora-token-classification")
